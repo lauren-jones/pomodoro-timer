@@ -19,7 +19,7 @@ export default function PlayButton({
         {isPlaying ? (
           <BsPauseFill className="text-red-400" size={20} />
         ) : (
-          <BsPlayFill className="text-red-400" size={20} />
+          <BsPlayFill className="text-red-400 " size={20} />
         )}
       </button>
     </div>

@@ -1,33 +1,33 @@
 import React from "react";
-import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { LuTimer } from "react-icons/lu";
+import { useTheme } from "next-themes";
 
 interface LightDarkProps {
   isDarkMode: boolean;
 }
 
-export default function LightDarkMode({ isDarkMode }: LightDarkProps) {
+export default function LightDarkMode() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center p-4">
-        <div className="text-xl font-light tracking-wide text-gray-800">
+        <div className="text-xl font-light tracking-wide text-gray-800 dark:text-white">
           pomodoro
         </div>{" "}
-        <LuTimer size={20} className="text-gray-800" />
+        <LuTimer size={20} className="text-gray-800 dark:text-white" />
       </div>
-      <div className="flex justify-end items-center p-4">
-        <BsFillSunFill className="mr-2 text-red-400" size={18} />
-        <label className="relative inline-flex cursor-pointer">
-          <input
-            type="checkbox"
-            value=""
-            defaultChecked={isDarkMode}
-            className="sr-only peer"
-          />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-300"></div>
-        </label>
-        <BsMoonFill className="ml-2 text-red-400" size={16} />
-      </div>
+      <button
+        onClick={() => (theme == "dark" ? setTheme("light") : setTheme("dark"))}
+        className="p-4"
+      >
+        {theme == "light" ? (
+          <FiMoon size={20} className="text-gray-800 dark:text-white" />
+        ) : (
+          <FiSun size={20} className="text-gray-800 dark:text-white" />
+        )}
+      </button>
     </div>
   );
 }

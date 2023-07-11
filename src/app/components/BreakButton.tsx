@@ -21,7 +21,7 @@ export default function BreakButton({
       ) : (
         <button
           onClick={handleChangeIsFocus}
-          className="bg-blue-400 mb-10 rounded-lg px-8 py-3 text-xl text-white tracking-wide uppercase font-light"
+          className="bg-blue-400 mb-10 dark:bg-blue-500 rounded-lg px-8 py-3 text-xl text-white tracking-wide uppercase font-light"
         >
           Start work
         </button>

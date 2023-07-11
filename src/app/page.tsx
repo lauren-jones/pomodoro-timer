@@ -5,12 +5,14 @@ import Clock from "./components/Clock";
 import FocusMessage from "./components/FocusMessage";
 import LightDarkMode from "./components/LightDarkMode";
 import PlayButton from "./components/PlayButton";
+import useSound from "use-sound";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFocus, setIsFocus] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [remainingTime, setRemainingTime] = useState(1 * 60);
+
+  const [play] = useSound("./alert.wav");
 
   useEffect(() => {
     let timeout: any = null;
@@ -20,6 +22,7 @@ export default function Home() {
       }, 1000);
     }
     if (isPlaying && remainingTime == 0) {
+      play();
       setIsPlaying(false);
       setIsFocus(!isFocus);
       setIsPlaying(true);
@@ -29,7 +32,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isFocus) {
-      setRemainingTime(1 * 20);
+      setRemainingTime(1 * 60);
     } else {
       setRemainingTime(5);
     }
@@ -42,8 +45,8 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-lg max-w-lg w-full">
-        <LightDarkMode isDarkMode={isDarkMode} />
+      <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg max-w-lg w-full">
+        <LightDarkMode />
         <Clock remainingTime={remainingTime} />
         <FocusMessage isFocus={isFocus} />
         <PlayButton

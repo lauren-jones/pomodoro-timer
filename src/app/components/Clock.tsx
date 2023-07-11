@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 interface ClockProps {
   remainingTime: number;
@@ -16,9 +16,9 @@ export default function Clock({ remainingTime }: ClockProps) {
   return (
     <div>
       <div className="flex items-center justify-center p-4 mt-10">
-        <div className="bg-gradient-to-r from-white to-gray-100 shadow-md rounded-full h-72 w-72 flex items-center justify-center">
+        <div className="bg-gradient-to-r from-white to-blue-100 dark:from-slate-900 dark:to-blue-500 shadow-md rounded-full h-72 w-72 flex items-center justify-center">
           <div>
-            <div className="text-[60px] font-thin text-red-400">
+            <div className="text-[60px] font-thin text-red-400 dark:text-white">
               {formatTime(remainingTime)}
             </div>
           </div>

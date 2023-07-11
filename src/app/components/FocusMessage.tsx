@@ -6,7 +6,7 @@ interface FocusMessageProps {
 
 export default function FocusMessage({ isFocus }: FocusMessageProps) {
   return (
-    <div className="text-xl font-light text-center p-4 text-gray-500 tracking-wide">
+    <div className="text-xl font-light text-center p-4 text-gray-500 dark:text-slate-200 tracking-wide">
       {isFocus ? "FOCUS TIME" : "BREAK TIME"}
     </div>
   );
